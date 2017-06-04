@@ -1,0 +1,21 @@
+s.getClass().getName()+'@'+Integer.toHexString(s.hasCode);
+等价于s.toString();
+
+判断的对象是否是某个类的对象？
+	格式：
+		对象名 instanceof 类名;
+
+equals：
+	引用类型：默认情况下，比较的是地址值；
+
+protected void finalize(); 当垃圾回收器确定不存在对该对象的引用时，由对象的垃圾回收器调用此方法。用于垃圾回收，但是什么时候回收不确定；
+
+面试题：
+	==和equals()的区别;
+	1.==:
+		基本类型：比较的值是否相同；
+		引用类型：比较的是地址值是否相同；
+	2.equals()
+		只能比较引用类型：默认情况下，比较的是地址值是否相同；可以根据自己需求重写方法；
+
+Obejct类中的getClass()、notify()、notifyAll()、wait()方法不能被重写，因为是用final修饰的;

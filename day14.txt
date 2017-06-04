@@ -1,0 +1,69 @@
+﻿正则表达式：符合一定规则的字符串；
+	1.判断功能：
+		String类,public static boolean matches(String regex)
+	2.分割功能：
+		String类,public String[] split(String regex)
+	3.替换功能：
+		String类,pubilc String[] replaceAll(String regex,String replacement)
+	4.获取功能：
+		Pattern和Matcher
+			Pattern p = Patter.compile("a*b");//a*出现一次或者多次a;
+			Matcher m = p.matcher("aaaaaab");
+			
+			find():查找是否存在;
+			group():获取查找过的数据;先查找.
+
+\b 单词边界：不是单词字符的地方； 如：hello world?haha;xixi
+
+\\w 单词字符：[a-zA-Z_0-9]
+
+Math类中pow()、ceil()、floor()方法，返回值类型是double;
+
+面试题：
+	1.求指定范围内的随机数的方法
+		public static int random(int start, int end) {
+			int number = (int) (Math.random() * (end - start + 1)) + start;
+			return number;
+		}
+
+	2.Random()和Random(long seed)的区别；
+		Random()：没有给种子，用的是默认种子，是当前时间毫秒值；
+		Random(long seed)：给出指定的种子；给定种子的随机数每次得到的种子是相同的；
+
+执行大量的对象的释放，才调用垃圾回收器最好。
+
+BigInteger[] divideAndRemainer(BigInteger val):返回商和余数的数组;商：0索引的内容，余数：1索引的内容；
+
+BigDecimal:float类型和double类型容易丢失精度，所以JAVA提供了BigDecimal,结局精度丢失问题;
+	定义：不可变的、任意精度的符号十进制数，可以解决数据精度丢失问题；
+
+Date/DateFormat:
+	1.Date是日期类，可以精确到毫秒；
+		构造方法：
+			Date();
+			Date(long time);
+		成员方法：
+			getTime();
+			setTime(long time);
+
+
+从Date得到一个毫秒值
+	getTime();
+把一个毫秒值转换为Date
+	构造方法;
+	setTime(long time);返回本身;
+
+String -- Date(格式化)
+	format();
+
+Date -- String(解析)
+	parse();解析字符串的文本，生成 Date
+
+DateFormat:可以进行日期和字符串的格式化和解析，但是由于是抽象类，所以要使用具体的子类 SimpleDateFormat.
+
+SimpleDateFormat的构造方法：格式化和解析；
+		SimpleDateFormat():默认模式
+		SimpleDateFormat(String pattern):给定模式,在把一个字符串解析为日期的时候，请注意格式必须和给定的字符串格式匹配；
+			如： yyyy--MM--dd
+
+public static int get(int field):返回给定的字段值，日历类中的每个日历字段都是静态变量，并且都是ing类型;

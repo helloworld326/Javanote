@@ -1,0 +1,47 @@
+getBytes() 是Java编程语言中将一个字符串转化为一个字节数组byte[]的方法
+
+打印流特点：
+	1.只有写，没有读；
+	2.可以操作任意数据类型；
+	3.可以自动刷新;
+	4.该流可以直接操作文本文件；
+		那些流对象可以直接操作文本文件：
+			FileInputStream
+			FileOutputStream
+			FileReader
+			FileWriter
+			PrintStream
+			PrintWriter
+	流：
+		基本流：就是能够直接读取文件的；
+		高级流：在基本流的基础上提供一些功能；
+	
+	自动刷新：
+		1.调用println()、printf()、format()方法才有用；
+			println 等价于：
+				bw.writer();
+				bw.newLine();
+				bw.flush();
+		2.刷新还可实现换行；
+		
+Scanner类出现之前，键盘录入数据：
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in);
+		String = br.readLine();
+	对应地：
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+			bw.write();
+			bw.newLine();
+			bw.flush();
+
+序列化流：把对象按照流一样的方式存入文本文件或者在网络中传输，对象 -- 流数据(ObjectOutputStream)
+反序列化流：把文本文件中的流对象或者网络中传输的流对象还原成对象；流数据 -- 对象(ObjectInputStream)
+
+Serializable接口：没有任何方法，被称为标记接口;
+
+java文件的修改会改变其在内存中的地址，可能导致再次读取的时候出现错误,在这种情况,文件需要重新写入;
+java.io.InvalidClassException
+
+面试题：
+	序列化和反序列化
+		1.把对象写入文本文件或者在网络中传输，让被序列化的对象所实现是序列化的接口，该接口是一个标记接口，没有任何方法；
+		2.把流还原成对象;

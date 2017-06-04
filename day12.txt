@@ -1,0 +1,41 @@
+public String();空构造；
+public String(byte[] bytes):把字节数组转成字符串;
+public String(byte[] bytes,int index,int length):把字节数组的一部分转换成字符串
+public String(char[] value):把字符数组转成字符串;
+public String(char[] value,int index,int count):把字符数组的一部分转换成字符串
+public String(String original):把字符串常量值转换成字符串;
+
+字符串直接赋值的方式是先到方法区中字符串常量池里去找，如果有就直接返回，没有，就创建并返回；
+
+字符串一旦被赋值就不能被改变：值不能变，而不是引用；(会存在于字符串常量池中)
+
+面试题：
+	String s = new String("hello");和 String s = "hello";
+
+equals:比较引用类型默认也是比较地址值是否相同，而String类重写了equals()方法，比较的是内容是否相同；
+
+字符串如果是变量相加，先开空间，再拼接；
+字符串如果是常量想加，先拼接(编译的时候就进行拼接)，然后在常量池里找，如果有就直接返回，否则就创建；
+
+boolean equals (Object obj):比较字符串的内容是否相同，区分大小写;
+boolean equalsIgnoreCase(Object obj):比较字符串的内容，忽略大小写;
+boolean contains(String str):判断大串中是否包含小串;
+boolean startsWith(String str):判断字符串是否以某一个指定的字符串开头;
+boolean isEmpty():判断字符串是否为空;
+	note:
+		字符串内容为空：对象存在没有数据； String s = "";
+		字符串对象为空：对象不存在； String s = null;	
+
+空指针异常：
+	1.对象不存在不能用掉方法；如：String s4 = null;
+
+String 类的获取功能
+int length():获取字符串的长度；
+char charAt(int index):获取指定索引位置的字符；
+int indexOf(int ch):返回指定字符在串中第一次出现的索引；
+
+Scanner:
+	1.hasNextXxx() 判断是否是某种类型的;
+	2.nextXxx() 返回某种类型的元素;
+
+public String substring(int beginIndex) ：返回一个新的字符串，它是此字符串的一个子字符串。

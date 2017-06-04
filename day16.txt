@@ -1,0 +1,70 @@
+﻿/ClassCastException:类型转换异常；
+
+Vector:
+	1.添加功能:
+		public void addElement(Object obj)
+	2.获取功能：
+		public Object elementAt(int index)
+		public Enumeration elements()
+			boolean hasMoreElements()
+			Object nextElement()
+
+LinkedList:
+	1.添加功能：
+		public addFirst(Object obj)
+		public addLast(Object obj)
+	2.获取功能：
+		public Object getFirst()
+		public Object getLast()
+	3.删除功能：
+		public Object removeFirst() //删除谁返回谁；
+		public Object removeLast()	//删除谁返回谁；
+
+ArrayList、Vector、LinkedList都是类，不再是接口；
+
+contains的底层是equals()方法,equals()方法默认比较的是地址值;
+
+arr.add(10); //不报错，因为jdk5以后有自动装箱,其实是一个引用类型;
+	反编译后：arr.add(Integer.valueOf(10));
+
+泛型：
+	是一种把类型明确的工作推迟到创建对象的或者调用方法的时候才去明确的特殊的类型；也叫参数化类型;
+	格式：
+		<数据类型>	//只能是引用类型
+	好处：
+		1.把运行期间的问题提前到了编译期间；
+		2.避免了类型的强制转换；
+		3.优化了程序设计，解决黄色警告线；
+
+	？：泛型规定了集合的类型，那么集合应该就只能存储一种数据类型了，如果长度可变与数组还有区别吗？
+		泛型可以在类中定义整体类即通过定义泛型类来实现，由主类中传入类型参数去调用自己想要操作的类型；
+			class Object<T>{
+			}
+
+JDK7的新特性：泛型推断；如：ArrayList<Student> arr = new ArrayList<>();
+
+泛型类：把泛型定义在类上。
+
+堆内存和方法区的东西会在垃圾回收器空闲的时候进行回收;
+
+泛型通配符：
+	任意类型，如果没有明确，那么就是Object以及任意的Java类了；
+
+？ extends E 
+	向上限定，E或其子类；
+
+? super E
+	向下限定，E或其父类；
+
+JDK5新特性：
+	自动拆装箱,泛型,增强for,静态导入,可变参数,枚举;
+	1.增强for
+		格式：
+			for(元素数据类型变量：数组或者Collection集合){
+				使用变量即可，该变量就是元素;
+			}
+
+String str = "abc";
+	is equivalent to:
+    		char data[] = {'a', 'b', 'c'};
+    			 String str = new String(data);//构造方法

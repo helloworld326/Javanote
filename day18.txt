@@ -1,0 +1,152 @@
+Map:可以存储键值对的元素；
+	特点：将键映射到值得对象。一个映射不能包含重复的键，每个键只能得到一个值；
+		其数据结构只跟键有关，与值无关;Collection集合的数据结构是针对元素无效的;
+
+Map和Collection的区别：
+	1.Map集合存储元素是成对出现的，collection单独出现;
+	2.Map的键是唯一的，值是可重复；Set是唯一的，List是可重复的;
+
+	方法：
+		V put(key,value);添加元素,如果键没有就直接添加，如果有则替换原键对应的值，并将其返回;
+
+		Map的遍历：(夫妻树)
+			方式一：(通过键去遍历)map.get();
+				1.获取所有的键；
+				2.遍历键的集合，获取每一个键；//需要新创建一个键的集合; 
+				3.根据键去找值；
+
+			方式二：Set<Map.Entry<K,V>> entry():返回键值对对象的集合;
+				1.获取所有键值对对象的集合；
+				2.遍历键值对对象的集合，得到每一个键值对对象；
+				3. 根据键值对获取键和值；
+
+	LinkedHashMap:是Map接口的哈希表和链接列表实现，具有可预知的迭代顺序;
+		即存储和取出的顺序一致;
+
+面试题：
+Hashtable和HashMap的区别
+	Hashtable:线程安全，效率低，不允许Null键和Null值；
+	HashMap:线程不安全，效率高，允许Null键和Null值；
+
+List,Set和Map是否都继承了自Map接口
+	List、Set继承自Collection,Map本身就是一个顶层接口;
+
+Collections:针对集合进行操作的工具类，是静态方法;
+
+	方法：
+		1.public static <T> void sort(List<T> list):排序(默认情况下自然排序);
+		2.public static <T> int binarySearch(List<?> list,T key):二分查找；
+		3.public static <T> T max(Collention<?> coll):最大值;
+		4.public static void reverse(List<?> list):反转;
+		5.public static void shuffle<List<?> list):随机置换; 
+
+面试题：
+	Collection和Collections的区别：
+		Collection:是单列集合的顶层接口，有子接口List、Set;
+		Collections:是针对集合操作的工具类，有对集合进行排序和二分查找的算法;
+
+集合：
+	Collection(单列集合)
+		List(有序,可重复)
+			ArrayList	底层数据结构是数组，查询快，增删慢，线程不安全，效率高
+			Vector		底层数据结构是数组，查询快，增删慢，线程安全，效率低
+			LinkedList	底层数据结构是链表，查询慢，增删快，线程不安全，效率高
+		Set(无序,唯一)
+			HashSet		底层数据结构是哈希表，两个方法hashCode()和equals()
+					执行顺序：
+						首先判断hashCode()值是否相同
+							是：继续执行equals(),看其返回值
+								是true；说明元素重复不添加;
+								是false：就直接添加到集合
+							否：就直接添加到集合;
+				LinkedList
+					底层数据结构由链表和哈希表组成。
+					由表链保证元素有序。
+					由哈希表保证元素唯一。
+			TreeSet
+				底层数据结构是自平衡二叉树，
+				根据比较的返回值是否为0来决定元素唯一性
+				两种排序：
+					1.自然排序(元素具有比较性)
+						让元素所属的类实现Comparab接口
+					2.比较器排序(集合具有比较性)
+						让集合接受一个Comparator的实现类对象
+	Map(双列集合)
+		1.Map集合的数据结构仅仅对阵键有效，与值无关;
+		2.存储的是键值对形式的元素，值可以重复，但是键唯一；
+
+		HashMap:底层是哈希表，线程不安全，效率高
+			执行顺序：
+					首先判断hashCode()值是否相同
+						是：继续执行equals(),看其返回值
+							是true；说明元素重复不添加;
+							是false：就直接添加到集合
+						否：就直接添加到集合;
+			LinkedHashMap
+				底层数据结构由链表和哈希表组成。
+					由表链保证元素有序。
+					由哈希表保证元素唯一。
+		Hashtable：底层是哈希表，线程安全，效率低
+			执行顺序：
+					首先判断hashCode()值是否相同
+						是：继续执行equals(),看其返回值
+							是true；说明元素重复不添加;
+							是false：就直接添加到集合
+						否：就直接添加到集合;
+		TreeMap
+
+选择思路：
+	是否键值对形式；
+		true:	Map
+					键是否需要排序
+						true:TreeMap
+						false:HashMap
+					不知道就使用HashMap.
+
+		flase:Collection
+				元素是否唯一：
+					true Set
+						元素是否需要排序:
+							true:TreeSet
+							false:HashSet
+						不知道就使用HashSet
+					flase:List 用ArrayList
+
+集合的常见方法以及遍历：
+	Collection:
+		add()
+		remove()
+		contains()
+		iterator()
+		size()
+
+		遍历:
+			增强for 底层方法是迭代器
+			迭代器
+
+		|--List：
+			get()
+			遍历：
+				普通for
+				增强for 底层方法是迭代器
+				迭代器
+
+		|--Set:
+			get()
+
+			遍历：
+				增强for 底层方法是迭代器
+				迭代器
+
+	Map:
+		put()
+		remove()
+		containsKey(),containsValue()
+		keySet()
+		value()
+		enterySet()
+		size()
+
+		遍历:
+			根据键去找值；
+			根据键值对对象分别找键和值；

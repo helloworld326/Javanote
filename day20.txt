@@ -1,0 +1,30 @@
+递归：	1.要有出口;
+		2.次数不能太多,否则内存会溢出;
+		3.构造方法不能递归;
+		
+FileOutputStream 用于写入诸如图像数据之类的原始字节的流。要写入字符流，请考虑使用 FileWriter。
+FileInputStream 用于读取诸如图像数据之类的原始字节流。要读取字符流，请考虑使用 FileReader。
+
+字符流 = 字节流 + 编码表;(由字节流经转换流转换过来)
+java语言默认编码是GBK;
+
+字符流写入数据通常需要flush刷新一下;
+
+面试题：
+	close()和flush()的区别：
+		1.close()先刷新数据，再关闭流，关闭后流对象不可以继续使用;
+		2.flush()仅仅刷新缓冲区,刷新之后流对象还可以继续使用;
+		
+write流写入数据会自动进行类型转换;
+
+OutputStreamWriter = FileOutStream + 编码表(GBK);
+FileWriter = FileOutputStream + 编码表(GBK);
+
+InputStreamReader = FileInputStream + 编码表(GBK);
+FileReader = FileInputStream + 编码表(GBK);
+
+static关键字的作用：
+	1.static成员变量,静态变量属于类，在内存中有一个复制，只要静态变量所在的类被加载，这个静态变量就会被分配内存空间.
+	2.static成员方法，static方法不能使用this和super关键字，不能调用非static方法，static方法也不能访问非static类型的变量.
+	3.static代码块，该代码块只会被执行一次.
+	4.static内部类.

@@ -1,0 +1,50 @@
+线程安全：(多线程讲解)
+	安全 -- 同步 -- 数据安全一些，不能同时操作；
+	不安全 -- 不同步 -- 效率高一些，可以同时操作；
+
+StringBuffer：
+	线程安全的可变字符串
+
+StringBuffer和String的区别；
+	前者长度可变，后者不可变；如果前者做字符串的拼接，不会浪费太多的资源；
+
+StringBuffer的构造方法：
+	piblic StringBuffer();无参；
+	public StringBuffer(int capacity):指定容量的字符串缓冲区域；
+	public StringBuffer(String str):指定字符串的字符串缓冲对象；
+
+	public int capcity():返回当前容量，初始为16;
+
+String、StringBuffer和StringBuilder的区别？
+	1.String是内容不可变的(其地址里面的内容)，而StringBuffer,StringBuilder都是内容可变的(地址内容，不会浪费太多资源)
+	2.StringBuffer是同步的，数据安全;StringBuilder是不同步的，但效率高些,普遍使用这个。
+
+StringBuffer和数组的区别？
+	1.StringBuffer存储一个字符串数据；而数组里面可以存放同一类型的数据，但只能存放一种；
+
+note:
+	String是一种特殊的引用类型,其效果相当于基本数据类型；
+
+public static void sort();底层是快速排序;
+
+面试题：
+	1.自动拆装箱：
+		自动装箱：把基本类型转换为引用类型；
+		自动拆箱：把引用类型转换为基本类型；
+		integer x = null;//会出现NullPointerException；要先判断integer是否为Null；
+	2.Integer的数据直接赋值，如果在-128到127之间，会直接从缓冲池里获取数据，（假如有的话）
+
+有equals方法重写比较的才是内容值，否则比较的还是地址值；
+
+StringBuffer的常见功能
+	1.添加功能；
+	2.删除功能；
+	3.替换功能；
+	4.反转功能；
+	5.截取功能；（返回值为String类型）
+
+String和int的相互转化；
+	1.String -- int 
+		Integer.parseInt(String s);
+	2.int -- String
+		String.valueOf(100);
